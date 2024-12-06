@@ -14,6 +14,20 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/onboarding_2.png',
     'assets/images/onboarding_3.png'
   ];
+  List<List<String>> sliderText = [
+    [
+      'Find Events That You Need',
+      'Discover events actively looking for your services.\nSecure tickets and get involved in opportunities that\nmatch your expertise.',
+    ],
+    [
+      'Track Your Next Moves',
+      'Stay ahead eith a clear view of upcoming events, ticket details, \nand deadlines--all in one place.'
+    ],
+    [
+      'Managing Your Earnings Seamlessly',
+      'Keep tabs on your wallet balance, tracking earnings from events, and enjoy hassle-free transactions on the go.'
+    ],
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 1.43,
               child: PageView.builder(
                 itemCount: imagePaths.length,
                 itemBuilder: (context, index) {
                   return OnboardingImageSlider(
                     imagePath: imagePaths[index],
+                    sliderText: sliderText[index],
+                    noOfImages: imagePaths.length,
                   );
                 },
               ),
@@ -47,32 +63,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     Color.fromRGBO(255, 246, 241, 1),
                     Color.fromRGBO(253, 229, 227, 1)
                   ]),
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(15),
-                  ),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Find Events That You Need',
-                        style: TextStyle(
-                            fontFamily: 'Pally',
-                            fontSize: 26.68,
-                            fontWeight: FontWeight.bold),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text("data"),
                       ),
-                      Text(
-                        'Discover events actively looking for your services.\nSecure tickets and get involved in opportunities that\nmatch your expertise.',
-                        style: TextStyle(
-                          fontFamily: 'Pally',
-                          fontWeight: FontWeight.w400,
-                        ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text("data"),
                       ),
-                      Column(
-                          //children: [SizedBox(), SizedBox()],
-                          )
                     ],
                   ),
                 ),
