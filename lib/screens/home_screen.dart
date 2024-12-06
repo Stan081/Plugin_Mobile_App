@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:plugin_app/screens/vendor_signup_screen.dart';
+import 'package:plugin_app/widgets/elevated_gradient_button.dart';
+import 'package:plugin_app/widgets/onboarding_base_widget.dart';
 import 'package:plugin_app/widgets/onboarding_image_slider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,20 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size(8, 8),
-        child: Container(
-          color: const Color.fromRGBO(188, 23, 35, 1),
-        ),
-      ),
+    return OnboardingBaseWidget(
       body: Container(
         color: const Color.fromRGBO(188, 23, 35, 1),
         child: Column(
           children: [
             SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 1.43,
+              height: MediaQuery.of(context).size.height / 1.38,
               child: PageView.builder(
                 itemCount: imagePaths.length,
                 itemBuilder: (context, index) {
@@ -68,14 +65,39 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text("data"),
+                      MyElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpScreen()),
+                          );
+                        },
+                        child: const Text(
+                          "Create Vendor Profile",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
                       ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text("data"),
-                      ),
+                      const SizedBox(height: 20),
+                      MyElevatedButton(
+                          onPressed: () {},
+                          gradient: const LinearGradient(colors: [
+                            Color.fromRGBO(40, 30, 23, 0.07),
+                            Color.fromRGBO(40, 30, 23, 0.07)
+                          ]),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/search.png'),
+                              const SizedBox(width: 10),
+                              const Text(
+                                "Browse Events",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(40, 30, 23, 1),
+                                    fontSize: 20),
+                              ),
+                            ],
+                          ))
                     ],
                   ),
                 ),
