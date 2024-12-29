@@ -30,7 +30,7 @@ class OnboardingImageSlider extends StatelessWidget {
                 Color.fromRGBO(253, 229, 227, 1)
               ]),
               borderRadius: BorderRadius.vertical(
-                top: Radius.circular(15),
+                top: Radius.circular(20),
               ),
             ),
             child: Padding(

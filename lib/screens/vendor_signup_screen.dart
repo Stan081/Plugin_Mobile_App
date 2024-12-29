@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plugin_app/components/onboarding.dart';
+import 'package:plugin_app/screens/vendor_create_profile_screen.dart';
 import 'package:plugin_app/widgets/elevated_gradient_button.dart';
 import 'package:plugin_app/widgets/onboarding_base_widget.dart';
 
@@ -10,7 +12,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final double fontSize = 14;
   @override
   Widget build(BuildContext context) {
     return OnboardingBaseWidget(
@@ -21,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height / 2.7,
-              child: Image.asset('assets/images/signup_icon.png'),
+              child: Image.asset('assets/icons/signup_icon.png'),
             ),
             Expanded(
               child: Container(
@@ -32,122 +33,67 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Color.fromRGBO(253, 229, 227, 1)
                   ]),
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(8),
+                    top: Radius.circular(20),
                   ),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(padding: EdgeInsets.all(10)),
+                    const SizedBox(height: 10),
                     Center(
-                      child: Image.asset('assets/images/truedepth.png'),
+                      child: Image.asset('assets/icons/truedepth.png'),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 30),
-                          Text(
+                          const SizedBox(height: 30),
+                          const Text(
                             'Sign Up',
                             style: TextStyle(
                                 fontSize: 24.38, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(height: 10),
-                          Text(
+                          const SizedBox(height: 10),
+                          const Text(
                             'We need your email address to verify your account \nand keep your tickets safe.',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               overflow: TextOverflow.clip,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
-                          Text('Email Address'),
-                          SizedBox(
-                            height: 10,
+                          formTextFields(
+                            'Email Address',
+                            'Enter your email address',
                           ),
-                          TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Enter your email address',
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)),
-                              ),
-                            ),
-                          )
                         ],
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          MyElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const SignUpScreen()),
-                              );
-                            },
-                            child: const Text(
-                              "Continue",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
+                    MyElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const CreateVendorProfileScreen(),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 40, horizontal: 20),
-                            child: RichText(
-                              textAlign: TextAlign.center,
-                              //maxLines: 1,
-                              text: TextSpan(
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'By registering, you accept our ',
-                                    style: TextStyle(
-                                        fontFamily: 'Pally',
-                                        color: Colors.grey,
-                                        fontSize: fontSize),
-                                  ),
-                                  TextSpan(
-                                    text: 'Terms of Use ',
-                                    style: TextStyle(
-                                        fontFamily: 'Pally',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: fontSize,
-                                        color: const Color.fromRGBO(
-                                            188, 23, 35, 1)),
-                                  ),
-                                  TextSpan(
-                                    text: 'and ',
-                                    style: TextStyle(
-                                        fontFamily: 'Pally',
-                                        color: Colors.grey,
-                                        fontSize: fontSize),
-                                  ),
-                                  TextSpan(
-                                    text: 'Privacy Policy.',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Pally',
-                                        color: const Color.fromRGBO(
-                                            188, 23, 35, 1),
-                                        fontSize: fontSize),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
+                        );
+                      },
+                      child: const Text(
+                        "Continue",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    termsAndPrivacy(),
                   ],
                 ),
               ),

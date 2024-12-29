@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Plugin Vendor',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(188, 23, 35, 1),
+        ),
         useMaterial3: true,
         fontFamily: 'Pally',
       ),

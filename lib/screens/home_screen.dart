@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset('assets/images/search.png'),
+                              Image.asset('assets/icons/search.png'),
                               const SizedBox(width: 10),
                               const Text(
                                 "Browse Events",
